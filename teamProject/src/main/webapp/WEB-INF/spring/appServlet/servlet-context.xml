@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- new -->
+	<!-- DI -->
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<!-- @Controller호출이나 필요한 스브링 빈(객체)설정을 편리하게 하기위한 것이다. -->
+	<mvc:annotation-driven />
+	
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- js, css, image등 정적리소스(파일)들을 포함시키는 방법이다. mapping은 프로그램상의 접근 위치이고, location이 실제 파일시스템 상 경로이다. -->
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<!-- ModelAndView 객체로부터 리턴된 논리적인 이름을 웹 어플리케이션 내의 템플릿의 경로에 도달할 수 있도록 접두어와 접미어를 붙이는 것이다. -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- base package 아래에 있는 모든 클래스들을 검사해서 특정 Annotation이 붙어 있는 클래스들은 자동으로 Bean으로 등록하는 것 -->
+	<context:component-scan base-package="com.cafe.charhanjan" />
+	
+	<!-- 커넥션 풀 설정 -->
+	<!-- DB연결 정보 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.mariadb.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://kjw4968.cafe24.com:3306/kjw4968?useUnicode=true&amp;characterEncoding=utf8"/>
+        <property name="username" value="kjw4968"/>
+        <property name="password" value="usereazypos@284"/>
+    </bean>
+	
+	<!-- mybatis설정 1. SqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />	<!-- mybatis 세션생성시 사용할 dataSource주입 -->	<!-- ref="bean(객체)" 를 넣을 때 사용 -->
+        <property name="mapperLocations">	<!-- mybatis 세션생성후 쿼리를 실행시킬때 사용할 쿼리위치(메퍼)설정 -->
+        	<list>
+        		
+                <value>classpath:com/cafe/charhanjan/mapper/RootStockCateMapper.xml</value>
+                
+        	</list>
+        </property>
+    </bean>
+    
+    <!-- mybatis설정 2. SqlSessionTemplate-->
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+    	<!-- new SqlSessionTemplate(sqlSessionTemplate) -->
+        <constructor-arg index="0" ref="sqlSessionFactory" />
+    </bean>
+    
+</beans>

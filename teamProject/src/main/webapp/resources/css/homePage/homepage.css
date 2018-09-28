@@ -1,0 +1,224 @@
+@charset "UTF-8";
+
+/* 포지션 태그 핵 설정 */
+.clearfix{
+	*zoom:1;
+}
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+
+/* html 여백 삭제 */
+*{
+	margin: 0;
+	padding: 0;
+}
+
+/* 전체(부모) 레이아웃 */
+.wrapper{
+	position: relative;
+}
+
+/* 로그인 바 레이아웃 */
+.top{
+	background-color: black;
+	height: 40px;
+}
+
+/* 로그인 바 레이아웃 */
+.loginBar{
+	position: absolute;
+	
+	top:12px;
+	right: 275px;
+}
+
+/* 로그인 바 ul */
+.loginUl {
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+/* 로그인 바 li */
+.loginLi {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    padding-right: 40px;
+    border : 0;
+    float: left;
+    font-size: 12px;
+    color:white;
+}
+
+/* 로고, 메뉴바 레이아웃 */
+.menu{
+	background-color: white;
+	height: 110px;
+	
+	z-index: 2;
+}
+
+/* 로고 레이아웃 */
+.logo{
+	position: absolute;
+	
+	top:50px;
+	left: 315px;
+}
+
+/* 로고 이미지 */
+.charLogo{
+	height: 94px;
+	width: 168px;
+}
+
+/* 메뉴 바 */
+.menuBar{
+	position: absolute;
+	
+	top:80px;
+	right: 250px;
+	
+	style="margin-left: 50px;
+	z-index: 1000;
+}
+
+/* menu */
+        #menu{ 
+        	margin:0px; 
+        	padding:0px; 
+        	list-style:none; 
+        	color:#fff; 
+        	line-height:45px; 
+        	display:inline-block; 
+        	float:left; 
+        	z-index:1000; 
+        }
+        #menu a { 
+        	color:#444444; /* 메인 폰트 색상 */
+        	text-decoration:none;
+        	font-size: 20px; 
+        	font-weight: bold;
+        }
+        #menu > li {
+        	background:white none repeat scroll 0 0; /* 메인 색상 */
+       	 	cursor:pointer; float:left; position:relative;padding:0px 65px;
+       	 }
+        #menu > li a:hover {color:#BD2470;}
+        #menu .logo {
+        	background:transparent none repeat scroll 0% 0%; 
+        	padding:0px; 
+        	background-color:red;
+        	}
+
+		/* sub-menus*/
+        #menu ul { padding:0px; margin:0px; display:block; display:inline;}
+        #menu li ul { 
+        	position:absolute; 
+        	left:-10px; 
+        	top:0px; 
+        	margin-top:45px;
+        	width:300px; /* 서브 메뉴 가로 크기 */
+        	line-height:16px; 
+        	background-color:white; /* 서브 메뉴 색상 */
+        	color:red; /* for IE */ 
+        	display:none; 
+        	border-radius:20px;
+        }
+        #menu li:hover ul { display:block;}
+        #menu li ul li{ 
+        	display:block; 
+        	margin:5px 20px; 
+        	padding: 5px 0px;  
+/*         	border-top: dotted 1px #606060;  */
+        	list-style-type:none;
+        	
+        }
+        #menu li ul li:first-child { 
+        	border-top: none; 
+        }
+        #menu li ul li a { 
+        	display:block; 
+        	color:#red; 
+        }
+        #menu li ul li a:hover { 
+        	color:#red; 
+        }
+        /* main submenu */
+        #menu #main { 
+        	left:0px; 
+        	top:-20px; 
+        	padding-top:20px; 
+        	background-color:#70afdf; 
+        	color:#fff; 
+        	z-index:999;
+        }
+
+/* 홈페이지 메인 사진 레이아웃 */
+.homeImage{
+/* 	background-color: gray; */
+/* 	height: 641px; */
+	z-index: -1;
+}
+
+/* 메인 사진 레이아웃 */
+.mainImage{
+/* 	background-color:gray; */
+	
+	z-index: -1;
+	position:absolute; 
+	
+	top:150px;
+	
+	left:50%; 
+	transform:translateX(-50%);
+}
+
+/* 메인 사진 */
+.homepageMain{
+	z-index: -1;
+}
+
+/* 메인 소개글  레이아웃 */
+.homeIntroduce{
+	position:absolute; 
+	
+	top:850px;
+	
+	
+	left:50%; 
+	transform:translateX(-54%);
+}
+
+/* 소개글 레이아웃 */
+.introduce{
+	background-color: #EAEAEA;
+	width: 100%;
+}
+
+/* 소개글 테이블 */
+.introduceTable{
+	background-color: #EAEAEA;
+	width: 100%;
+}
+
+.introduceTr{
+	vertical-align:top
+}
+
+.introduceTd1{
+	width:600px; border-right:1px solid #cccccc; text-align:center;
+}
+
+.introduceTd2{
+	width:600px;
+
+	text-align: center;
+}
+
+
+
+

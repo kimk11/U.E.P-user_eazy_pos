@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<!-- 2018. 9.27(목 이원상 -->
+<!-- 네임 스페이스 설정 -->  
+<mapper namespace="com.cafe.charhanjan.mapper.RootStockCateMapper">
+<!-- 아이디 : 메소드명, 파라미터 타입 : 사용되는 DTO--> 
+<!-- #{} 인스턴스 변수명 -->
+	
+	<select id="selectRootStockCateList" resultType="com.cafe.charhanjan.dto.RootStockCate">
+		SELECT  
+			root_stock_cate_code as rootStockCateCode
+			, root_stock_cate_name as rootStockCateName
+		FROM root_stock_cate
+	</select>
+	
+	
+</mapper>
