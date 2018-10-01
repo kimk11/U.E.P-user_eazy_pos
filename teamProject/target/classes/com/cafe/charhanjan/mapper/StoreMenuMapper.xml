@@ -4,11 +4,40 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.cafe.charhanjan.mapper.StoreMenuMapper.">
+  
+  	<resultMap type="com.test.jjdev.dto.storeMenu" id="storeMenu">
+  		<result property="storeSalesMenuCode" column="store_sales_menu_code"/>
+  		<result property="storeCode" column="store_code"/>
+  		<result property="rootMenuCateCode" column="root_menu_cate_code"/>
+  		<result property="storeSalesMenuName" column="store_sales_menu_name"/>
+  		<result property="storeSalesMenuPrice" column="store_sales_menu_price"/>
+  		<result property="storeSalesMenuDiscount" column="store_sales_menu_discount"/>
+  		<result property="storeSalesMenuState" column="store_sales_menu_state"/>
+  	</resultMap>
   	
-  	<insert id="allMenuInsert" parameterType="com.test.jjdev.dto.storeMenu">
-        INSERT INTO store_menu
-		(store_sales_menu_code, store_code, root_menu_cate_code, store_sales_menu_name, store_sales_menu_price, store_sales_menu_discount, store_sales_menu_state, store_sales_menu_date, store_sales_menu_time)
-		VALUES (#{storeSalesMenuCode}, #{storeCode}, #{rootMenuCateCode}, #{storeSalesMenuName}, #{storeSalesMenuPrice}, #{storeSalesMenuDiscount}, #{storeSalesMenuState}, NOW(), NOW())
+  	<insert id="allMenuInsert" parameterType="storeMenu">
+        INSERT INTO store_menu(
+			store_sales_menu_code
+			, store_code
+			, root_menu_cate_code 
+			, store_sales_menu_name
+			, store_sales_menu_price
+			, store_sales_menu_discount
+			, store_sales_menu_state
+			, store_sales_menu_date
+			, store_sales_menu_time
+		)
+		VALUES (
+			#{storeSalesMenuCode}
+			, #{storeCode}
+			, #{rootMenuCateCode}
+			, #{storeSalesMenuName}
+			, #{storeSalesMenuPrice}
+			, #{storeSalesMenuDiscount}
+			, #{storeSalesMenuState}
+			, CURDATE()
+			, CURTIME()
+		)
     </insert>
   
   	<update id="allMenuUpdate" parameterType="com.test.jjdev.dto.storeMenu">

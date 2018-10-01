@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
     	$('#insertButton').click(function(){
@@ -13,6 +14,7 @@
 <title>전체 메뉴 추가</title>
 </head>
 <body>
+<div class="container">
 	<form id="insertForm" action="${pageContext.request.contextPath}/all_menu_insert" method="post">
         <div>
             <label for="storeSalesMenuCode">메뉴코드 :</label>
@@ -43,10 +45,11 @@
             <input name="storeSalesMenuState" id="storeSalesMenuState" type="text"/>
         </div>
         <div>
-            <input id="addButton" type="button" value="메뉴추가"/>
+            <input id="insertButton" type="button" value="메뉴추가"/>
             <input type="reset" value="초기화"/>
-            <a class="btn btn-default" href="${pageContext.request.contextPath}/all_menu">메뉴목록</a>
+            <a class="btn btn-default" href="${pageContext.request.contextPath}/all_menu_list">메뉴목록</a>
         </div>
     </form>
+</div>
 </body>
 </html>

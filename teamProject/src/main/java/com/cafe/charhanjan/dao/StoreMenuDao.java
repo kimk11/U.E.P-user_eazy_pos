@@ -11,13 +11,13 @@ import com.cafe.charhanjan.dto.StoreMenu;
 
 @Repository
 public class StoreMenuDao {
-	private final String NS = "com.cafe.charhanjan.mapper.storeMenuMapper.";
+	private final String NS = "com.cafe.charhanjan.mapper.StoreMenuMapper.";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public int insertMenu(StoreMenu storeMenu) {
-        return sqlSessionTemplate.insert(NS+"insertMenu", storeMenu);
+        return sqlSessionTemplate.insert(NS+"allMenuInsert", storeMenu);
     }
 	
 	public int updateStoreMenu(StoreMenu storeMenu) {

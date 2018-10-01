@@ -19,6 +19,7 @@ public class StoreMenuService {
 	private StoreMenuDao storeMenuDao;
 	
 	public int addStoreMenu(StoreMenu storeMenu) {
+		
 		return storeMenuDao.insertMenu(storeMenu);
 	}
 	

@@ -11,6 +11,4 @@ public class StoreMenu {
 	private int storeSalesMenuPrice;
 	private String storeSalesMenuDiscount;
 	private String storeSalesMenuState;
-	private String storeSalesMenuDate;
-	private String storeSalesMenuTime;
 }
