@@ -21,10 +21,9 @@ import com.cafe.charhanjan.service.RootStockMenuService;
 @Controller
 public class AdminHomePageController {
 	
-	@Autowired
-	private RootStockCateService rootStockCateService;
-	private RootStockMenuService rootStockMenuService;
-	private RootMenuService rootMenuService;
+	@Autowired private RootStockCateService rootStockCateService;
+	@Autowired private RootStockMenuService rootStockMenuService;
+	@Autowired private RootMenuService rootMenuService;
 	
 	@RequestMapping(value="/homePage/admin/homePageAdmin", method=RequestMethod.GET)
 	public String homePageAdmin() {

@@ -3,23 +3,23 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="com.cafe.charhanjan.mapper.StoreMenuMapper.">
+  <mapper namespace="com.cafe.charhanjan.mapper.StoreMenuMapper">
   
-  	<resultMap type="com.test.jjdev.dto.storeMenu" id="storeMenu">
-  		<result property="storeSalesMenuCode" column="store_sales_menu_code"/>
-  		<result property="storeCode" column="store_code"/>
-  		<result property="rootMenuCateCode" column="root_menu_cate_code"/>
-  		<result property="storeSalesMenuName" column="store_sales_menu_name"/>
-  		<result property="storeSalesMenuPrice" column="store_sales_menu_price"/>
-  		<result property="storeSalesMenuDiscount" column="store_sales_menu_discount"/>
-  		<result property="storeSalesMenuState" column="store_sales_menu_state"/>
-  	</resultMap>
+<!--   	<resultMap type="com.test.jjdev.dto.storeMenu" id="storeMenu"> -->
+<!--   		<result property="storeSalesMenuCode" column="store_sales_menu_code"/> -->
+<!--   		<result property="storeCode" column="store_code"/> -->
+<!--   		<result property="rootMenuCateCode" column="root_menu_cate_code"/> -->
+<!--   		<result property="storeSalesMenuName" column="store_sales_menu_name"/> -->
+<!--   		<result property="storeSalesMenuPrice" column="store_sales_menu_price"/> -->
+<!--   		<result property="storeSalesMenuDiscount" column="store_sales_menu_discount"/> -->
+<!--   		<result property="storeSalesMenuState" column="store_sales_menu_state"/> -->
+<!--   	</resultMap> -->
   	
-  	<insert id="allMenuInsert" parameterType="storeMenu">
+  	<insert id="allMenuInsert" parameterType="com.cafe.charhanjan.dto.StoreMenu">
         INSERT INTO store_menu(
 			store_sales_menu_code
 			, store_code
-			, root_menu_cate_code 
+			, root_menu_cate_code
 			, store_sales_menu_name
 			, store_sales_menu_price
 			, store_sales_menu_discount
@@ -40,7 +40,7 @@
 		)
     </insert>
   
-  	<update id="allMenuUpdate" parameterType="com.test.jjdev.dto.storeMenu">
+  	<update id="allMenuUpdate" parameterType="com.cafe.charhanjan.dto.StoreMenu">
         UPDATE store_menu
 		SET
 			root_menu_cate_code=#{rootMenuCateCode},
@@ -51,12 +51,12 @@
 		WHERE store_sales_menu_code=#{storeSalesMenuCode} AND store_code=#{storeCode}
 	</update>
     
-    <delete id="allMenuDelete" parameterType="com.test.jjdev.dto.storeMenu">
+    <delete id="allMenuDelete" parameterType="com.cafe.charhanjan.dto.StoreMenu">
         DELETE FROM store_menu 
         WHERE store_sales_menu_code=#{storeSalesMenuCode} AND store_code=#{storeCode}
     </delete>
     
-    <select id="allMenuSelect" parameterType="java.util.Map" resultType="com.test.jjdev.service.Board">
+    <select id="allMenuSelect" parameterType="java.util.Map" resultType="com.cafe.charhanjan.dto.StoreMenu">
         SELECT 
             store_sales_menu_code
             , store_code
@@ -70,7 +70,7 @@
         FROM store_menu
     </select>
     
-    <select id="allMenuList" parameterType="java.util.Map" resultType="com.test.jjdev.service.Board">
+    <select id="allMenuList" parameterType="java.util.Map" resultType="com.cafe.charhanjan.dto.StoreMenu">
         SELECT 
             store_sales_menu_code
             , store_code
