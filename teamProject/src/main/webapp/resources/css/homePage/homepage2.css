@@ -157,74 +157,26 @@
         	z-index:999;
         }
 
-/* 홈페이지 메인 사진 레이아웃 */
-.homeImage{
-/* 	background-color: gray; */
-/* 	height: 641px; */
-	z-index: -1;
-}
-
-/* 메인 사진 레이아웃 */
-.mainImage{
-/* 	background-color:gray; */
-	
-	z-index: -1;
-	position:absolute; 
-	
-	top:150px;
-	
-	left:50%; 
-	transform:translateX(-50%);
-}
-
-/* 메인 사진 */
-.homepageMain{
-	z-index: -1;
-}
-
-/* 메인 소개글  레이아웃 */
-.homeIntroduce{
-	position:absolute; 
-	
-	top:800px;
-	
-	left:50%; 
-	transform:translateX(-54%);
+/* 메인 소개글 */
+.mainIntro{
+	height: 110px;
+	width: 100%;
+	background-color: #F6F6F6;
 
 }
-
-/* 소개글 레이아웃 */
-.introduce{
-	
-}
-
-/* 소개글 테이블 */
-.introduceTable{
-	
-}
-
-.introduceTr{
-	vertical-align:top
-}
-
-.introduceTd1{
-	width:600px; border-right:1px solid #cccccc; text-align:center;
-}
-
-.introduceTd2{
-	width:600px;
-
-	text-align: center;
-}
-
-.introduceBackColor{
-	height: 200px;
-	width:100%;
-	background-color: #EAEAEA;
-	
+/* 메인 소개글 포지션 */
+.mainIntroPosition{
 	position: absolute;
-	top:790px;
-	z-index: -2;
+	top:180px;
+	left: 250px;
+}
+
+.main{
+	
+}
+
+.menuList{
+
 }
 
 /* 바닥글 */
@@ -234,7 +186,7 @@
 	background-color: #232323;
 	
 	position: absolute;
-	top:990px;
+	top:990px;   /* 바닥글 위치 */
 }
 
 /* 바닥글 레이아웃 */

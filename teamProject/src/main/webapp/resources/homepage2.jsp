@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 
-<link href="${pageContext.request.contextPath}/resources/css/homePage/homepage.css?ver=1" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/homePage/homepage2.css?ver=1" rel="stylesheet" type="text/css">
 
 <title>Insert title here</title>
 </head>
@@ -75,45 +75,22 @@
 			
 		</div>
 		
-		
-		<!-- 사진 -->
-		<div class="homeImage">
+		<!-- 메인소개 -->
+		<div class="mainIntro">
+			<div class="mainIntroPosition">
+				<span style="font-size: 32px; color: #8A8A8A">신메뉴</span>
+				<span style="font-size: 32px; font-weight: lighter; color: #C0C0C0"> | </span>
+				<span style="font-size: 14px; color:#353535">char한잔에서 새롭게 만나는 다양한 행복</span>
+			</div>
 			
-			<!-- 메인 사진 -->
-			<div class="mainImage">
-				<img class="homepageMain" src="${pageContext.request.contextPath}/resources/images/homepageMain.jpg">
-			</div>
 		</div>
 		
-		
-		<!-- main2 -->
-		<div class="homeIntroduce">
-		
-			<!-- 소개글 -->
-			<div class="introduce">
-				<table class="introduceTable">
-				  <tr class="introduceTr">
-				    <td class="introduceTd1">
-				    	<span style="font-size: 27px; font-weight: bold; color: #C92800">Enjoy the</span><br>
-				    	<span style="font-size: 27px; font-weight: bold; color: #C92800">Char HanJan</span><br>
-				    	<br><br>
-				    	<span style="font-size: 17px; font-weight: bold; color: #555555">차 한잔과 함께하는 또 다른 재미로</span><br>
-				    	<span style="font-size: 17px; font-weight: bold; color: #555555">당신을 초대합니다.</span><br>
-				    </td>
-				    <td class="introduceTd2">
-				    	<br><br>
-				    	<span style="font-size: 15px; font-weight: 600; color: #555555; font-style: italic;">차 한잔과 함께하는 즐거운 이벤트에 당신을 초대합니다.</span><br>
-						<span style="font-size: 15px; font-weight: 600; color: #555555; font-style: italic;">차 한잔을 경험하고, 차 한잔과 함께 즐기고,</span><br> 
-						<span style="font-size: 15px; font-weight: 600; color: #555555; font-style: italic;">차 한잔에서 공감할수 있는 풍성한 이벤트가</span><br>
-						<span style="font-size: 15px; font-weight: 600; color: #555555; font-style: italic;">당신을 기다리고 있습니다.</span><br>
-				    </td>
-				  </tr>
-				</table>
-			</div>
+		<!-- 메인 -->
+		<div class="main">
+	
+			
 		</div>
 		
-		<div class="introduceBackColor">
-		</div>
 		
 		<!-- 바닥글 -->
 		<div class="bottle">
