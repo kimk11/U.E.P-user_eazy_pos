@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.cafe.charhanjan.mapper.StoreMenuMapper.">
+  	
+  	<insert id="allMenuInsert" parameterType="com.test.jjdev.dto.storeMenu">
+        INSERT INTO store_menu
+		(store_sales_menu_code, store_code, root_menu_cate_code, store_sales_menu_name, store_sales_menu_price, store_sales_menu_discount, store_sales_menu_state, store_sales_menu_date, store_sales_menu_time)
+		VALUES (#{storeSalesMenuCode}, #{storeCode}, #{rootMenuCateCode}, #{storeSalesMenuName}, #{storeSalesMenuPrice}, #{storeSalesMenuDiscount}, #{storeSalesMenuState}, NOW(), NOW())
+    </insert>
+  
+  	<update id="allMenuUpdate" parameterType="com.test.jjdev.dto.storeMenu">
+        UPDATE store_menu
+		SET
+			root_menu_cate_code=#{rootMenuCateCode},
+			store_sales_menu_name=#{storeSalesMenuName},
+			store_sales_menu_price=#{storeSalesMenuPrice},
+			store_sales_menu_discount=#{storeSalesMenuDiscount},
+			store_sales_menu_state=#{storeSalesMenuState},
+		WHERE store_sales_menu_code=#{storeSalesMenuCode} AND store_code=#{storeCode}
+	</update>
+    
+    <delete id="allMenuDelete" parameterType="com.test.jjdev.dto.storeMenu">
+        DELETE FROM store_menu 
+        WHERE store_sales_menu_code=#{storeSalesMenuCode} AND store_code=#{storeCode}
+    </delete>
+    
+    <select id="allMenuSelect" parameterType="java.util.Map" resultType="com.test.jjdev.service.Board">
+        SELECT 
+            store_sales_menu_code
+            , store_code
+            , root_menu_cate_code
+            , store_sales_menu_name
+            , store_sales_menu_price
+            , store_sales_menu_discount
+            , store_sales_menu_state
+            , store_sales_menu_date
+            , store_sales_menu_time
+        FROM store_menu
+    </select>
+    
+    <select id="allMenuList" parameterType="java.util.Map" resultType="com.test.jjdev.service.Board">
+        SELECT 
+            store_sales_menu_code
+            , store_code
+            , root_menu_cate_code
+            , store_sales_menu_name
+            , store_sales_menu_price
+            , store_sales_menu_discount
+            , store_sales_menu_state
+            , store_sales_menu_date
+            , store_sales_menu_time
+        FROM store_menu
+        ORDER BY store_sales_menu_code ASC 
+        LIMIT #{beginRow}, #{pagePerRow}
+    </select>
+    
+    <select id="allMenuCountGet" resultType="int">
+        SELECT COUNT(*) FROM store_menu
+    </select>
+        
+  </mapper>

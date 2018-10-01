@@ -12,7 +12,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 
-
 </script>
 </head>
 <body>
@@ -29,17 +28,17 @@
 			<tr>
 				<td>${rootStockCate.rootStockCateCode }</td>
 				<td>${rootStockCate.rootStockCateName }</td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td><input class="btn btn-default" type="button" value="등록"></td>
+				<td><input class="btn btn-default" type="button" value="수정"></td>
+				<td><input class="btn btn-default" type="button" value="삭제"></td>
 			</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	<div>
-		<input class="btn btn-default" type="button" value="등록">
-		<input class="btn btn-default" type="button" value="수정">
-		<input class="btn btn-default" type="button" value="삭제">
+		
+		
+		
 	</div>	
 </body>
 

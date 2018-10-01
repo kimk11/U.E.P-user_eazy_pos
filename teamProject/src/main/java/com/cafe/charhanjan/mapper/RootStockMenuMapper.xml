@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 2018. 9.21(금) 이원상 -->
+<!-- 네임 스페이스 설정 -->  
+<mapper namespace="com.cafe.charhanjan.mapper.RootStockMenuMapper">
+<!-- 아이디 : 메소드명, 파라미터 타입 : 사용되는 DTO--> 
+<!-- #{} 인스턴스 변수명 -->
+	<insert id="insertRootStock" parameterType="com.cafe.charhanjan.dto.RootStockMenu">
+		INSERT INTO root_stock_menu (root_stock_code, root_stock_cate_code, root_stock_name, root_stock_price, root_stock_sales_state, root_stock_registration_date, root_stock_registration_time)
+		VALUES (#{rootStockCode}
+		, #{rootStockCateCode}
+		, #{rootStockName}
+		, #{rootStockPrice}
+		, #{rootStockSalesState}
+		, curdate()
+		, curtime())
+	</insert>
+	
+	<delete id="deleteRootStock" parameterType="com.cafe.charhanjan.dto.RootStockMenu">
+		DELETE FROM root_stock_menu WHERE root_stock_code=#{rootStockCode}
+	</delete>
+	
+	<update id="updateRootStock" parameterType="com.cafe.charhanjan.dto.RootStockMenu">
+		UPDATE root_stock_menu
+		SET
+		root_stock_cate_code=#{rootStockCode}
+		,root_stock_name=#{rootStockName}
+		,root_stock_price=#{rootStockPrice}
+		,root_stock_sales_state=#{rootStockSalesState}
+		WHERE root_stock_code=#{rootStockCode}	
+	</update>
+	
+	<select id="selectRootStock" parameterType="java.util.Map" resultType="com.cafe.charhanjan.dto.RootStockMenu">
+		select root_stock_code
+		,root_stock_cate_code
+		,root_stock_name
+		,root_stock_price
+		,root_stock_sales_state
+		,root_stock_registration_date
+		,root_stock_registration_time
+		from root_stock_menu
+		limit #{beginRow}, #{pagePerRow}
+	</select>
+	
+	<select id="getRootStockCount" resultType="int">
+		select count(*) from root_stock_menu 
+	</select>
+</mapper>	

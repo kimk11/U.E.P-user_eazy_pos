@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.cafe.charhanjan.mapper.StoreBusinessCompanyMapper">
+  	<!-- <selectKey resultType="hashmap" keyProperty="hItemCode,inteCode" order="BEFORE">
+		select if(isnull(h_item_code),'h_item_code1', concat('h_item_code', SUBSTRING(MAX(h_item_code),12)+1)) as hItemCode, if(isnull(inte_code),'inte_code1', concat('i', SUBSTRING(MAX(inte_code),2)+1)) as inteCode from head_item
+	</selectKey> -->
+  	<insert id="insertStoreBusinessCompany">
+  		INSERT INTO store_business_company(
+  		store_business_company_code
+  		,store_code
+  		,store_business_company_ceo
+  		,store_business_company_phone
+  		,store_business_company_licensee
+  		,store_business_company_email
+  		,store_business_company_date
+  		,store_business_company_time) 
+  		VALUES(#{storeBusinessCompanyCode}
+  		,#{storeCode}
+  		,#{storeBusinessCompanyName}
+  		,#{storeBusinessCompanyCeo}
+  		,#{storeStockName}
+  		,#{storeStockCount}
+  		,#{storeStockPrice}
+  		,CURDATE()
+  		,CURTIME())
+  	</insert>
+  	
+  	<update id="updateStoreBusinessCompany">
+  		UPDATE store_business_company
+		SET
+		store_business_company_name=#{storeBusinessCompanyName}
+		,store_business_company_ceo=#{storeBusinessCompanyCeo}
+		,store_business_company_phone=#{storeBusinessCompanyPhone}
+		,store_business_company_licensee=#{storeBusinessCompanyLicensee}
+		,store_business_company_email=#{storeBusinessCompanyEmail}
+		,store_business_company_date=CURDATE()
+		,store_business_company_time=CURTIME()
+		WHERE store_business_company_code=#{storeBusinessCompanyCode} AND store_code=#{storeCode}
+  	</update>
+  
+  	<delete id="deleteStoreBusinessCompany">
+  		DELETE FROM store_business_company 
+  		WHERE store_business_company_code='#{storeBusinessCompanyCode}' AND store_code=#{storeCode}
+  	</delete>
+  		
+  	<select id="selectStoreBusinessCompany">
+  		SELECT store_business_company_code
+  		,store_business_company_name
+  		,store_business_company_ceo
+  		,store_business_company_phone
+  		,store_business_company_licensee
+  		,store_business_company_email
+  		,store_business_company_date
+  		,store_business_company_time 
+  		FROM store_business_company
+  	</select>
+  	
+  	<!-- 페이징을 위한 총 거래처 수 계산 쿼리  -->
+  	<select id="selectStoreBusinessCompanyCount">
+  		SELECT COUNT(store_business_company_code) FROM store_business_company
+  	</select>
+  	
+  	
+  	<select id="getStoreBusinessCompanyList" parameterType="java.util.Map" resultType="com.cafe.charhanjan.StoreBusinessCompany">
+       SELECT store_business_company_code
+       ,store_business_company_name
+       ,store_business_company_ceo
+       ,store_business_company_phone
+       ,store_business_company_licensee
+       ,store_business_company_email
+       ,store_business_company_date
+       ,store_business_company_time 
+       FROM store_business_company
+       WHERE store_code=${storeCode} 
+       ORDER BY store_business_company_code ASC 
+       LIMIT #{currentPage}, #{pagePerRow}
+    </select>
+  </mapper>
+  

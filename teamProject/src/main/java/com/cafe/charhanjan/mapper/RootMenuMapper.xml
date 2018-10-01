@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+	<mapper namespace="com.cafe.charhanjan.mapper.">
+	
+	<insert id="allMenuInsert" parameterType="com.cafe.charhanjan.mapper.RootMenuMapper.">
+        INSERT INTO root_menu
+		(root_sales_menu_code, root_menu_cate_code, root_sales_menu_name, root_sales_menu_price, root_sales_menu_discount_state, root_sales_menu_registration_date)
+		VALUES (#{rootSalesMenuCode}, #{rootMenuCateCode}, #rootSalesMenuName}, #{rootSalesMenuPrice}, #{rootSalesMenuDiscountState}, NOW())
+    </insert>
+	
+	<update id="allMenuUpdate" parameterType="com.cafe.charhanjan.mapper.RootMenu">
+        UPDATE root_menu 
+            SET root_menu_cate_code = #{rootMenuCateCode}
+            , root_sales_menu_name = #{rootSalesMenuName}
+            , root_sales_menu_price = #{rootSalesMenuPrice}
+            , root_sales_menu_discount_state = #{rootSalesMenuDiscountState}
+        WHERE root_sales_menu_code = #{rootSalesMenuCode}
+    </update>
+	
+	<delete id="allMenuDelete" parameterType="com.cafe.charhanjan.mapper.RootMenu">
+        DELETE FROM root_menu 
+        WHERE root_sales_menu_code = #{rootSalesMenuCode} 
+    </delete>
+	
+	<select id="allMenuGet" resultType="int">
+        SELECT COUNT(*) FROM root_menu
+    </select>
+	
+	<select id="allMenuSelect" parameterType="int" resultType="com.test.jjdev.service.Board">
+        SELECT
+        	root_sales_menu_code
+            , root_sales_menu_code
+            , root_menu_cate_code
+            , root_sales_menu_name
+            , root_sales_menu_price
+            , root_sales_menu_discount_state
+            , root_sales_menu_registration_date
+        FROM root_menu 
+    </select>
+    
+    <select id="allMenuList" parameterType="java.util.Map" resultType="com.test.jjdev.service.Board">
+        SELECT
+            root_sales_menu_code
+            , root_sales_menu_code
+            , root_menu_cate_code
+            , root_sales_menu_name
+            , root_sales_menu_price
+            , root_sales_menu_discount_state
+            , root_sales_menu_registration_date
+        FROM root_menu 
+        ORDER BY root_sales_menu_code ASC 
+        LIMIT #{beginRow}, #{pagePerRow}
+    </select>
+    
+    <select id="newMenuList" parameterType="java.util.Map" resultType="com.test.jjdev.service.Board">
+        SELECT
+        	root_sales_menu_code
+            , root_sales_menu_code
+            , root_menu_cate_code
+            , root_sales_menu_name
+            , root_sales_menu_price
+            , root_sales_menu_discount_state
+            , root_sales_menu_registration_date
+        FROM root_menu 
+        ORDER BY root_sales_menu_registration_date ASC 
+        LIMIT 0, 5
+    </select>
+	
+	</mapper>

@@ -2,19 +2,33 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
 <!-- 2018. 9.27(목 이원상 -->
 <!-- 네임 스페이스 설정 -->  
-<mapper namespace="com.cafe.charhanjan.mapper.RootStockCateMapper">
+<mapper namespace="com.cafe.charhanjan.mapper.RootStockMenuMapper">
 <!-- 아이디 : 메소드명, 파라미터 타입 : 사용되는 DTO--> 
 <!-- #{} 인스턴스 변수명 -->
+	<insert id="insertRootStockCate" parameterType="com.cafe.charhanjan.dto.RootStockCate">
+		INSERT INTO root_stock_cate (root_stock_cate_code, root_stock_cate_name)
+		VALUES (#{rootStockCateCode}
+		, #{rootStockCateName}
+	</insert>
 	
-	<select id="selectRootStockCateList" resultType="com.cafe.charhanjan.dto.RootStockCate">
-		SELECT  
-			root_stock_cate_code as rootStockCateCode
-			, root_stock_cate_name as rootStockCateName
-		FROM root_stock_cate
+	<select id="selectRootStockCateList" parameterType="java.util.Map" resultType="com.cafe.charhanjan.dto.RootStockCate">
+		select root_stock_cate_code,root_stock_cate_name from root_stock_cate
+		limit #{beginRow}, #{pagePerRow}
 	</select>
 	
+	<select id="getRootStockCateCount" resultType="int">
+		select count(*) from root_stock_cate
+	</select>
 	
-</mapper>
+	<update id="updateRootStockCate" parameterType="com.cafe.charhanjan.dto.RootStockCate">
+		UPDATE root_stock_cate
+		SET root_stock_cate_name=#{rootStockCateName}
+		WHERE root_stock_cate_code=#{rootStockCateCode}
+	</update>
+	
+	<delete id="deleteRootStockCate" parameterType="com.cafe.charhanjan.dto.RootStockCate">
+		DELETE FROM root_stock_cate WHERE root_stock_cate_code=#{rootStockCateCode}
+	</delete>
+</mapper>	

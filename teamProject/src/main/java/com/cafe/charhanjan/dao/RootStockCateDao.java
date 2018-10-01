@@ -17,16 +17,36 @@ public class RootStockCateDao {
     @Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
     
-   
-    public List<RootStockCate> selectRootStockCateList(){
-    	List<RootStockCate> list= sqlSessionTemplate.selectList(NAMESPEACE+"selectRootStockCateList");
-
-    	for(RootStockCate cate : list) {
-    		System.out.println(cate.getRootStockCateCode());
-    	}
-
-    	
-    	return list;
+    // 메소드 설명
+    // 메소드 용도 : 본사 재고 카테고리 등록 메소드
+    // 매개변수 : RootStockCate 클래스의 인스턴스 참조값
+    // 리턴 : 입력된 행의 갯수
+    public int insertRootStockCate(RootStockCate rootStockCate) {
+		return sqlSessionTemplate.insert(NAMESPEACE+"insertRootStockCate", rootStockCate);
     }
- 
+    
+    // 메소드 설명
+    // 메소드 용도 : 본사 재고 카테고리 전체 조회 메소드
+    // 매개변수 : map
+    // 리턴 :
+
+    /*public List<RootStockCate> selectRootStockCateList(Map<String, Integer> map){
+    	return sqlSessionTemplate.selectList(NAMESPEACE+"selectRootStockCateList", map);
+    }*/
+    
+    public List<RootStockCate> selectRootStockCateList(HashMap<String, Object> map){
+    	return sqlSessionTemplate.selectList(NAMESPEACE+"selectRootStockCateList", map);
+    }
+    
+    public int getRootStockCateCount() {
+    	return sqlSessionTemplate.selectOne(NAMESPEACE+"getRootStockCateCount");
+    }
+    
+    public int updateRootStockCate(RootStockCate rootStockCate) {
+    	return sqlSessionTemplate.update(NAMESPEACE+"updateRootStockCate", rootStockCate);
+    }
+    
+    public int deleteRootStockCate(String rootStockCateCode) {
+    	return sqlSessionTemplate.delete(NAMESPEACE+"deleteRootStockCate", rootStockCateCode);
+    }
 }
