@@ -14,8 +14,7 @@ import com.cafe.charhanjan.dto.RootStockCate;
 public class RootStockCateDao {
 	private final String  NAMESPEACE = "com.cafe.charhanjan.mapper.RootStockCateMapper.";
 	// 객체 주입
-    @Autowired
-	private SqlSessionTemplate sqlSessionTemplate;
+    @Autowired private SqlSessionTemplate sqlSessionTemplate;
     
     // 메소드 설명
     // 메소드 용도 : 본사 재고 카테고리 등록 메소드
@@ -25,21 +24,8 @@ public class RootStockCateDao {
 		return sqlSessionTemplate.insert(NAMESPEACE+"insertRootStockCate", rootStockCate);
     }
     
-    // 메소드 설명
-    // 메소드 용도 : 본사 재고 카테고리 전체 조회 메소드
-    // 매개변수 : map
-    // 리턴 :
-
-    /*public List<RootStockCate> selectRootStockCateList(Map<String, Integer> map){
-    	return sqlSessionTemplate.selectList(NAMESPEACE+"selectRootStockCateList", map);
-    }*/
-    
     public List<RootStockCate> selectRootStockCateList(HashMap<String, Object> map){
-    	return sqlSessionTemplate.selectList(NAMESPEACE+"selectRootStockCateList", map);
-    }
-    
-    public int getRootStockCateCount() {
-    	return sqlSessionTemplate.selectOne(NAMESPEACE+"getRootStockCateCount");
+    	return sqlSessionTemplate.selectList(NAMESPEACE+"selectRootStockCateList");
     }
     
     public int updateRootStockCate(RootStockCate rootStockCate) {

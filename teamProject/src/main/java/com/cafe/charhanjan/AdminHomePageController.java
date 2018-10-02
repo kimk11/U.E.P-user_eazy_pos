@@ -61,17 +61,6 @@ public class AdminHomePageController {
 		return "homePage/admin/stock/root_stock_detail";			// 본사 관리자 재고상세 화면
 	}
 	
-//	@RequestMapping(value= "/homePage/admin/stock/rootStockCateList", method=RequestMethod.GET)
-//	public String rootStockCateList(Model model, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage, @RequestParam(value="pagePerRow", required=false, defaultValue="5") int pagePerRow) {
-//		HashMap<String,Integer> map = (HashMap<String, Integer>) rootStockCateService.getRootStockCateList(currentPage, pagePerRow);
-//		model.addAttribute("currentPage", currentPage);
-//		model.addAttribute("lastPage", map.get("lastPage"));
-//		model.addAttribute("rootStockCateCount", map.get("rootStockCateCount"));
-//		List<RootStockCate> list = (List<RootStockCate>)map;
-//		model.addAttribute("list", list);
-//		return "homePage/admin/stock/root_stock_cate_list";			// 본사 관리자 재고카테고리 리스트
-//	}
-	
 	@RequestMapping(value= "/homePage/admin/stock/rootStockCateList", method=RequestMethod.GET)
 	public String rootStockCateList(Model model, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage, @RequestParam(value="pagePerRow", required=false, defaultValue="5") int pagePerRow) {
 		HashMap<String,Object> map = rootStockCateService.getRootStockCateList(currentPage, pagePerRow);
@@ -80,6 +69,19 @@ public class AdminHomePageController {
 		model.addAttribute("rootStockCateCount", map.get("rootStockCateCount"));
 		model.addAttribute("list", map.get("list"));
 		return "homePage/admin/stock/root_stock_cate_list";			// 본사 관리자 재고카테고리 리스트
+	}
+	
+	@RequestMapping(value= "/homePage/admin/stock/rootStockCateInsertAction", method=RequestMethod.POST)
+	public String rootStockCateInsertAction() {
+		System.out.println("sss");
+		return "redirect:/homePage/admin/stock/rootStockCateList";			// 본사 관리자 재고입력 요청
+	}
+	
+	@RequestMapping(value= "/homePage/admin/stock/rootStockCateUpdateAction", method=RequestMethod.POST)
+	public String rootStockCateUpdateAction(RootStockCate rootStockCate) {
+		System.out.println("UpdateAction");
+		int modifyResult = rootStockCateService.modifyRootStockCate(rootStockCate);
+		return "redirect:/homePage/admin/stock/rootStockCateList";			// 본사 관리자 재고수정 요청
 	}
 	
 	@RequestMapping(value="/homePage/admin/menu/rootMenuInsert", method=RequestMethod.GET)
