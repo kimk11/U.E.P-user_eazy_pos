@@ -24,6 +24,7 @@
 			, store_sales_menu_price
 			, store_sales_menu_discount
 			, store_sales_menu_state
+			, store_sales_menu_image
 			, store_sales_menu_date
 			, store_sales_menu_time
 		)
@@ -35,6 +36,7 @@
 			, #{storeSalesMenuPrice}
 			, #{storeSalesMenuDiscount}
 			, #{storeSalesMenuState}
+			, #{storeSalesMenuImage}
 			, CURDATE()
 			, CURTIME()
 		)
@@ -56,7 +58,7 @@
         WHERE store_sales_menu_code=#{storeSalesMenuCode} AND store_code=#{storeCode}
     </delete>
     
-    <select id="allMenuSelect" parameterType="java.util.Map" resultType="com.cafe.charhanjan.dto.StoreMenu">
+    <select id="menuSelect" parameterType="String" resultType="com.cafe.charhanjan.dto.StoreMenu">
         SELECT 
             store_sales_menu_code
             , store_code
@@ -65,22 +67,25 @@
             , store_sales_menu_price
             , store_sales_menu_discount
             , store_sales_menu_state
+            , store_sales_menu_image
             , store_sales_menu_date
             , store_sales_menu_time
         FROM store_menu
+        WHERE store_sales_menu_code = #{storeSalesMenuCode}
     </select>
     
     <select id="allMenuList" parameterType="java.util.Map" resultType="com.cafe.charhanjan.dto.StoreMenu">
         SELECT 
-            store_sales_menu_code
-            , store_code
-            , root_menu_cate_code
-            , store_sales_menu_name
-            , store_sales_menu_price
-            , store_sales_menu_discount
-            , store_sales_menu_state
-            , store_sales_menu_date
-            , store_sales_menu_time
+            store_sales_menu_code as storeSalesMenuCode
+            , store_code as storeCode
+            , root_menu_cate_code as rootMenuCateCode
+            , store_sales_menu_name as storeSalesMenuName
+            , store_sales_menu_price as storeSalesMenuPrice
+            , store_sales_menu_discount as storeSalesMenuDiscount
+            , store_sales_menu_state as storeSalesMenuState
+            , store_sales_menu_image as storeSalesMenuImage
+            , store_sales_menu_date as storeSalesMenuDate
+            , store_sales_menu_time as storeSalesMenuTime
         FROM store_menu
         ORDER BY store_sales_menu_code ASC 
         LIMIT #{beginRow}, #{pagePerRow}
@@ -89,5 +94,11 @@
     <select id="allMenuCountGet" resultType="int">
         SELECT COUNT(*) FROM store_menu
     </select>
-        
+	
+	<select id="rootCateList" resultType="com.cafe.charhanjan.dto.RootMenuCate">
+		SELECT
+			root_menu_cate_code as rootMenuCateCode
+			, root_menu_cate_name as rootMenuCateName
+		FROM root_menu_cate
+	</select>
   </mapper>

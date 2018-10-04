@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.cafe.charhanjan.dto.RootMenuCate;
 import com.cafe.charhanjan.dto.StoreMenu;
 
 @Repository
@@ -29,15 +30,19 @@ public class StoreMenuDao {
 	}
 	
 	public StoreMenu selectMenu(String storeSalesMenuCode) {
-		return sqlSessionTemplate.selectOne(NS+"getMenu", storeSalesMenuCode);
+		return sqlSessionTemplate.selectOne(NS+"menuSelect", storeSalesMenuCode);
 	}
 	
 	public List<StoreMenu> selectStroeMenuList(Map<String, Integer> map) {
-		return sqlSessionTemplate.selectList(NS+"getStoreMenu", map);
+		return sqlSessionTemplate.selectList(NS+"allMenuList", map);
 	}
 	
 	public int selectStoreMenuCount() {
-		return sqlSessionTemplate.selectOne(NS+"getStoreMenuCount");
+		return sqlSessionTemplate.selectOne(NS+"allMenuCountGet");
+	}
+	
+	public List<RootMenuCate> selectRootMenuCate() {
+		return sqlSessionTemplate.selectList(NS+"rootCateList");
 	}
 	
 }

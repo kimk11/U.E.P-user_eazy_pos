@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cafe.charhanjan.dao.StoreMenuDao;
+import com.cafe.charhanjan.dto.RootMenuCate;
 import com.cafe.charhanjan.dto.StoreMenu;
 
 @Service
@@ -46,6 +47,10 @@ public class StoreMenuService {
 	
 	public int getStoreMenuCount() {
 		return storeMenuDao.selectStoreMenuCount();
+	}
+	
+	public List<RootMenuCate> getRootMenuCate( ) {
+		return storeMenuDao.selectRootMenuCate();
 	}
 	
 }
