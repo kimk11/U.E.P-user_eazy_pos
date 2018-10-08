@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h2>거래처 리스트</h2>
-	<a href="${pageContext.request.contextPath}/insertStorebusinessCompany" ><button>거래처등록</button></a>
+	<a href="${pageContext.request.contextPath}/addStorebusinessCompany" ><button>거래처등록</button></a>
 	<table border="1">
 		<thead>
 			<tr>
@@ -26,7 +26,7 @@
 		</thead>
 		
 		<tbody>
-			<c:forEach var="company" items="${storeBusinessCompanyList}">
+			<c:forEach var="company" items="${list}">
 				<tr>
 					<td>${company.storeBusinessCompanyCode}</td>
 					<td>${company.storeBusinessComapnyName}</td>

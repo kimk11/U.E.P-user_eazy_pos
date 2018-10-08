@@ -7,7 +7,7 @@
 </head>
 <body>
 	<h2>거래처 등록</h2>
-	<form action="" method="post" id="businessCompanyForm">
+	<form action="addStoreBusinessCompanyAction" method="post" id="businessCompanyForm">
 		<input type="hidden" name="storeCode" value="" >	<!-- 체인점 코드 -->
 		<label>거래처명</label>
 		<input type="text" name="storeBusinessCompanyName">

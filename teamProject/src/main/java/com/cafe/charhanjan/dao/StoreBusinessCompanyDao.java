@@ -2,6 +2,7 @@
 package com.cafe.charhanjan.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,8 @@ public class StoreBusinessCompanyDao {
 	}
 	
 	// 거래처  조회
-	public List<StoreBusinessCompany> selectStoreBusinessCompany() {
-		return sqlSessionTemplate.selectList(NAMESPACE+"selectStoreBusinessCompany");
+	public List<StoreBusinessCompany> selectStoreBusinessCompany(Map<String, Integer> map) {
+		return sqlSessionTemplate.selectList(NAMESPACE+"selectStoreBusinessCompany",map);
 	}
 	
 	// 페이징을 위한 총 거래처 수
