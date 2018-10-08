@@ -16,8 +16,19 @@ public class RootMenuDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
+	// 메뉴 추가
 	public int insertRootMenu(RootMenu rootMenu) {
-		return sqlSessionTemplate.insert(NAMESPACE+"insertRootMenuDao", rootMenu);
+		return sqlSessionTemplate.insert(NAMESPACE+"allMenuInsert", rootMenu);
+	}
+	
+	// 메뉴 코드 검사
+	public int selectMenuCode() {
+		return sqlSessionTemplate.selectOne(NAMESPACE+"codeSelect");
+	}
+	
+	// 메뉴 유무 검사
+	public String selectMenuCheck() {
+		return sqlSessionTemplate.selectOne(NAMESPACE+"menuCheckSelect");
 	}
 	
 	public List<RootMenu> selectRootMenuList(Map<String, Integer> map) {

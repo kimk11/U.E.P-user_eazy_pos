@@ -46,6 +46,7 @@
         		
                 <value>classpath:com/cafe/charhanjan/mapper/RootStockCateMapper.xml</value>
                 <value>classpath:com/cafe/charhanjan/mapper/StoreMenuMapper.xml</value>
+                <value>classpath:com/cafe/charhanjan/mapper/RootMenuMapper.xml</value>
                 
         	</list>
         </property>

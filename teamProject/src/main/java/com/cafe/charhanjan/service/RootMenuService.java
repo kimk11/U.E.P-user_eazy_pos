@@ -31,7 +31,17 @@ public class RootMenuService {
 		return rootMenuDao.getRootMenuCount();
 	}
 	
+	// 메뉴 추가
 	public int addRootMenu(RootMenu rootMenu) {
+		String check = rootMenuDao.selectMenuCheck();
+		System.out.println(check+"check");
+		if(check != null) {
+			int codeNum = rootMenuDao.selectMenuCode()+1;
+			rootMenu.setRootSalesMenuCode("goods"+codeNum);
+		}else {
+			rootMenu.setRootSalesMenuCode("goods1");
+		}
+
 		return rootMenuDao.insertRootMenu(rootMenu);
 	}
 	

@@ -9,6 +9,8 @@ public class RootMenu {
 	private String rootSalesMenuName;
 	private int rootSalesMenuPrice;
 	private String rootSalesMenuDiscountState;
-	private String rootSalesMenuRegistrationDate;
+	private String rootSalesMenuImage;
+	private String rootSalesMenuDate;
+	private String rootSalesMenuTime;
 
 }

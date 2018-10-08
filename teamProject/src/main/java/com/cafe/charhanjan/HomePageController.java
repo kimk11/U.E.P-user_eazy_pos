@@ -45,7 +45,7 @@ public class HomePageController {
 	}
 	
 	//전체메뉴 리스트 페이지 요청
-	@RequestMapping(value={"/", "/all_menu_list"}, method=RequestMethod.GET)
+	@RequestMapping(value="/all_menu_list", method=RequestMethod.GET)
 	public String allMenuList(Model model, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
 		int boardCount = storeMenuService.getStoreMenuCount();
         int pagePerRow = 10;
