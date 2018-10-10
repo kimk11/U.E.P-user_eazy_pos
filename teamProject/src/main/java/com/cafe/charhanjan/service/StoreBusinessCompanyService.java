@@ -2,6 +2,7 @@
 
 package com.cafe.charhanjan.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +18,7 @@ import com.cafe.charhanjan.dto.StoreBusinessCompany;
 public class StoreBusinessCompanyService {
 	@Autowired
 	private StoreBusinessCompanyDao storeBusinessCompanyDao;
-	private Map<String,Integer> map;
+	
 	
 	public int addStoreBusinessCompany(StoreBusinessCompany storeBusinessCompany) {
 		return storeBusinessCompanyDao.insertStoreBusinessCompany(storeBusinessCompany);
@@ -26,22 +27,33 @@ public class StoreBusinessCompanyService {
 	public int modifyStoreBusinessCompany(StoreBusinessCompany storeBusinessCompany) {
 		return storeBusinessCompanyDao.updateStoreBusinessCompany(storeBusinessCompany);
 	}
-	
+
+// 	
 	public int removeStoreBusinessCompany(StoreBusinessCompany storeBusinessCompany) {
 		return storeBusinessCompanyDao.deleteStoreBusinessCompany(storeBusinessCompany);
 	}
-	
+
+//	거래처 리스트
 	public List<StoreBusinessCompany> getStoreBusinessCompanyList(int currentPage, int pagePerRow) {
-		int companyCount = getStoreBusinessCompanyCount();
-		int lastPage = (int)(Math.ceil((double)companyCount/pagePerRow));		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		map.put("startRow", (currentPage-1)*pagePerRow);				
 		map.put("pagePerRow", pagePerRow);									
-		map.put("companyCount", companyCount);
-		map.put("lastPage", lastPage);
-		return storeBusinessCompanyDao.selectStoreBusinessCompany(map);
+		return storeBusinessCompanyDao.selectStoreBusinessCompanyList(map);
 	}
 	
+//	 currentPage, lastPage, companyCount Map
+	public HashMap<String, Integer> getStoreBusinessCompanyMap(int currentPage, int pagePerRow) {
+		int companyCount = getStoreBusinessCompanyCount();
+		int lastPage = (int)(Math.ceil((double)companyCount/pagePerRow));
+		HashMap<String, Integer> map = new HashMap<String, Integer>();		
+		map.put("companyCount", companyCount);
+		map.put("lastPage", lastPage);
+		return map;
+	}
+	
+	
+//	총 거래처 수 
 	public int getStoreBusinessCompanyCount() {
-		return storeBusinessCompanyDao.selectStoreBusinessCompanyCount();
+		return storeBusinessCompanyDao.getStoreBusinessCompanyCount();
 	}
 }

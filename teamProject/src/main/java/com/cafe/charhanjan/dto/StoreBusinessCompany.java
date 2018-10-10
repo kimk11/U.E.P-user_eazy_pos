@@ -6,11 +6,11 @@ import lombok.Data;
 public class StoreBusinessCompany {
 	private String storeBusinessCompanyCode;
 	private String storeCode;
-	private String storeBusinessComapnyName;
+	private String storeBusinessCompanyName;
 	private String storeBusinessCompanyCeo;
 	private String storeBusinessCompanyPhone;
 	private String storeBusinessCompanyLicensee;
-	private String storeBusinessCompanyEamil;
+	private String storeBusinessCompanyEmail;
 	private String storeBusinessCompanyDate;
 	private String storeBusinessCompanyTime;
 }

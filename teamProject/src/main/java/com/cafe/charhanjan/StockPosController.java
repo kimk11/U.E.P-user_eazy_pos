@@ -25,11 +25,11 @@ public class StockPosController {
 	 @RequestMapping(value="/pos/stock/storeBusinessCompanyList", method = RequestMethod.GET)
 	    public String getStoreBusinessCompany(Model model, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage,@RequestParam(value="pagePerRow", required=false, defaultValue="5") int pagePerRow) {
 		 	System.out.println("3. addStoreBusinessCompany 거래처 리스트 ");
-	    	HashMap<String,Integer> map = (HashMap<String, Integer>) storeBusinessCompanyService.getStoreBusinessCompanyList(currentPage, pagePerRow);
-			model.addAttribute("currentPage", currentPage);
+		 	List<StoreBusinessCompany> list = storeBusinessCompanyService.getStoreBusinessCompanyList(currentPage, pagePerRow);
+	    	HashMap<String,Integer> map = storeBusinessCompanyService.getStoreBusinessCompanyMap(currentPage, pagePerRow);    // 작업중, 서비스에 메서드 추가해서 호출
+	    	model.addAttribute("currentPage", currentPage);
 			model.addAttribute("lastPage", map.get("lastPage"));
 			model.addAttribute("companyCount", map.get("companyCount"));
-			List<StoreBusinessCompany> list = (List<StoreBusinessCompany>)map;
 			model.addAttribute("list", list);
 	        return "pos/stock/store_business_company_list";
 	 }

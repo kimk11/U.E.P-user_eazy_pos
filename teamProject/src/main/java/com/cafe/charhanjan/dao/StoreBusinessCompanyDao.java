@@ -1,6 +1,7 @@
 /* 2018.09.27 송유빈 StoreBusinessCompany */
 package com.cafe.charhanjan.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +12,7 @@ import com.cafe.charhanjan.dto.StoreBusinessCompany;
 
 @Repository
 public class StoreBusinessCompanyDao {
-	private final String NAMESPACE = "com.cafe.charhanjan.StoreBusinessCompanyMapper.";
+	private final String NAMESPACE = "com.cafe.charhanjan.mapper.StoreBusinessCompanyMapper.";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;	// SqlSessionTemplate 클래스에는 setter가 없어서 생성자로 주입
@@ -32,12 +33,12 @@ public class StoreBusinessCompanyDao {
 	}
 	
 	// 거래처  조회
-	public List<StoreBusinessCompany> selectStoreBusinessCompany(Map<String, Integer> map) {
-		return sqlSessionTemplate.selectList(NAMESPACE+"selectStoreBusinessCompany",map);
+	public List<StoreBusinessCompany> selectStoreBusinessCompanyList(HashMap<String, Integer> map) {
+		return sqlSessionTemplate.selectList(NAMESPACE+"selectStoreBusinessCompanyList",map);
 	}
 	
 	// 페이징을 위한 총 거래처 수
-	public int selectStoreBusinessCompanyCount() {
-        return sqlSessionTemplate.selectOne(NAMESPACE+"selectStoreBusinessCompanyCount");
+	public int getStoreBusinessCompanyCount() {
+        return sqlSessionTemplate.selectOne(NAMESPACE+"getStoreBusinessCompanyCount");
     }
 }

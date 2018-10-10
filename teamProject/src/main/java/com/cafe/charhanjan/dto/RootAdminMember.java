@@ -7,6 +7,7 @@ public class RootAdminMember {
 	private String rootId;
 	private String rootPw;
 	private String rootName;
+	private String rootRank;
 	private String rootLevel;
 	private String rootEmployeeNum;
 	private String rootPhone;

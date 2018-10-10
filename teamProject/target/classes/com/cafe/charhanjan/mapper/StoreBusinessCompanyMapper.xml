@@ -62,19 +62,16 @@
   	</select>
   	
   	
-  	<select id="selectStoreBusinessCompanyList" parameterType="java.util.Map" resultType="com.cafe.charhanjan.StoreBusinessCompany">
-       SELECT store_business_company_code
-       ,store_business_company_name
-       ,store_business_company_ceo
-       ,store_business_company_phone
-       ,store_business_company_licensee
-       ,store_business_company_email
-       ,store_business_company_date
-       ,store_business_company_time 
+  	<select id="selectStoreBusinessCompanyList" parameterType="java.util.HashMap" resultType="com.cafe.charhanjan.dto.StoreBusinessCompany">
+       SELECT store_business_company_code AS storeBusinessCompanyCode
+       ,store_business_company_name AS storeBusinessCompanyName
+       ,store_business_company_ceo AS storeBusinessCompanyCeo
+       ,store_business_company_phone AS storeBusinessCompanyPhone
+       ,store_business_company_licensee AS storeBusinessCompanyLicensee
+       ,store_business_company_email AS storeBusinessCompanyEmail
+       ,store_business_company_date AS storeBusinessCompanyDate
+       ,store_business_company_time  AS storeBusinessCompanyTime
        FROM store_business_company
-       WHERE store_code=${storeCode} 
-       ORDER BY store_business_company_code ASC 
-       LIMIT #{currentPage}, #{pagePerRow}
     </select>
   </mapper>
   

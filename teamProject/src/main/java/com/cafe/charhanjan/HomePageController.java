@@ -60,4 +60,29 @@ public class HomePageController {
 		return "homePage/menu/all_menu_list";
 	}
 	
+	
+/*  송유빈 -  Login  -    */
+	// 권한별 로그인 선택 페이지(관리자, 직원, 일반회원, 비회원) 
+	@RequestMapping(value="/homePage/login/homepageGrade", method=RequestMethod.GET)
+	public String chooseLevelLogin() {
+		System.out.println("1. chooseLevelLogin 권한별 로그인 선택 페이지 요청");
+		return "homePage/login/homepage_grade";
+	}
+	
+	
+	// 관리자 로그인 입력 페이지 
+	
+	
+	// 로그인 처리 페이지 
+	
+	
+	// 회원가입 입력 페이지 
+	
+	
+	// 회원가입 처리 페이지
+	
+	
+	
+	
+	
 }

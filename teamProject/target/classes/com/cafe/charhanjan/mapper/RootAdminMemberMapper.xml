@@ -2,3 +2,74 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace = "com.cafe.charhanjan.mapper.RootAdminMemberMapper">
+  	<!-- 관리자 1명의 정보 조회 후 로그인  -->
+  	<select id="selectOneRootAdminMember" resultType="com.cafe.charhanjan.dto.RootAdminMember" parameterType="java.util.HashMap">
+  		SELECT 
+  		root_id AS rootId
+  		,root_name AS rootName
+  		,root_rank AS rootRank
+  		,root_level AS rootLevel
+  		,root_employee_num AS rootEmployeeNum
+  		,root_phone AS rootPhone
+  		,root_licensee AS rootLicensee
+  		,root_join_date AS rootJoinDate
+  		,root_join_time AS rootJoinTime
+  		FROM root_admin_member 
+  		WHERE root_id = "id001"
+  	</select>	
+
+	<!-- 최고 관리자만 열람 가능한 관리자 목록  -->  	
+  	<select id="selectAllRootAdminMember">
+  	SELECT root_id,root_name,root_rank,root_level,root_employee_num,root_phone,root_licensee,root_join_date,root_join_time 
+  	FROM root_admin_member
+  	</select>
+  	
+  	
+	<!-- 관리자 등록  -->
+	 <insert id="insertRootAdminMember" parameterType="com.cafe.charhanjan.dto.RootAdminMember">
+	 	 INSERT INTO root_admin_member(
+	 	 root_id
+	 	 , root_pw
+	 	 , root_name
+	 	 , root_rank
+	 	 , root_level
+	 	 , root_employee_num	<!-- 관리자번호 -->
+	 	 , root_phone
+	 	 , root_licensee
+	 	 , root_join_date
+	 	 , root_join_time)
+		VALUES (#{rootId}
+		, #{rootPw}
+		, #{rootName}
+		, #{rootRank}
+		, #{rootLevel}
+		, #{rootEmployeeNum}
+		, #{rootPhone}
+		, #{rootLicensee} 
+		,CURDATE()
+  		,CURTIME())
+  	</insert>
+  		
+  	<!-- 관리자 정보 수정(본인만) : 아이디 일치하면 정보 수정 가능-->
+  	 <update id="updateRootAdminMember" parameterType="com.cafe.charhanjan.dto.RootAdminMember">
+  		UPDATE root_admin_member
+		SET
+		root_pw=#{rootPw},
+		root_name=#{rootName},
+		root_rank=#{rootRank},
+		root_level=#{rootLevel},
+		root_employee_num=#{rootEmployeeNum},
+		root_phone=#{rootPhone},
+		root_licensee=#{rootLicensee},
+		root_join_date=#{#rootJoinDate},
+		root_join_time=#{rootJoinTime}
+		WHERE root_id=#{rootId}
+  	 </update>
+  	 
+  	 <!-- 관리자 탈퇴(삭제) : 로그인 된 id를 받아와서 pw 일치하면 탈퇴 완료 -->
+  	 <delete id="deleteRootAdminMember" parameterType="com.cafe.charhanjan.dto.RootAdminMember">
+  	 	DELETE FROM root_admin_member WHERE root_id=#{rootId} AND root_pw =#{rootPw}
+	</delete>
+  </mapper>

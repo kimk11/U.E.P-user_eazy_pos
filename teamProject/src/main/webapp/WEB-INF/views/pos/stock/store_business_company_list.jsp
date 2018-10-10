@@ -4,12 +4,16 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <title>거래처 리스트</title>
 </head>
 <body>
-	<h2>거래처 리스트</h2>
-	<a href="${pageContext.request.contextPath}/addStorebusinessCompany" ><button>거래처등록</button></a>
-	<table border="1">
+	<h1>거래처 리스트</h1><br>
+	<div>전체 거래처 수 : ${companyCount}</div><br>
+	<a href="/charhanjan/pos/stock/addStoreBusinessCompany"><button class="btn btn-primary" data-toggle="modal" data-target="#companyModal" data-whatever="@getbootstrap">거래처등록</button></a><br>
+	<table border="1" class="table table-striped">
 		<thead>
 			<tr>
 				<th>거래처코드</th>
@@ -29,18 +33,40 @@
 			<c:forEach var="company" items="${list}">
 				<tr>
 					<td>${company.storeBusinessCompanyCode}</td>
-					<td>${company.storeBusinessComapnyName}</td>
+					<td>${company.storeBusinessCompanyName}</td>
 					<td>${company.storeBusinessCompanyCeo}</td>
 					<td>${company.storeBusinessCompanyPhone}</td>
 					<td>${company.storeBusinessCompanyLicensee}</td>
-					<td>${company.storeBusinessCompanyEamil}</td>
+					<td>${company.storeBusinessCompanyEmail}</td>
 					<td>${company.storeBusinessCompanyDate}</td>
 					<td>${company.storeBusinessCompanyTime}</td>
-					<td><a href="${pageContext.request.contextPath}/updateStoreBusinessCompany">수정</a></td>
-					<td><a href="${pageContext.request.contextPath}/deleteStoreBusinessCompany">삭제</a></td>
+					<td><a href="/charhanjan/pos/stock/updateStoreBusinessCompany">수정</a></td>
+					<td><a href="/charhanjan/pos/stock/deleteStoreBusinessCompany">삭제</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	
+	
+	<!-- 이전, 다음 버튼 -->
+	<nav>
+  		<ul class="pager">
+   			<li><a href="/charhanjan/pos/stock/storeBusinessCompanyList?currentPage=${currentPage-1}">이전</a></li>
+   			<li><a href="/charhanjan/pos/stock/storeBusinessCompanyList?currentPage=${currentPage+1}">다음</a></li>
+  		</ul>
+	</nav>
+	
+	
+	
+<!-- 모달 -->
+
+
+
+<!--자바스크립트  -->
+<script type="text/javascript">
+
+</script>
+
+
 </body>
 </html>
