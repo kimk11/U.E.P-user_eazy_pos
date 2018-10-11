@@ -31,6 +31,7 @@ public class RootStockCateService {
 	}
 	
 	public int addRootStockCate(RootStockCate rootStockCate) {
+		rootStockCate.setRootStockCateCode(rootStockCateDao.selectLastRootStockCateCode());
 		return rootStockCateDao.insertRootStockCate(rootStockCate);
 	}
 
@@ -41,4 +42,5 @@ public class RootStockCateService {
 	public int modifyRootStockCate(RootStockCate rootStockCate) {
 		return rootStockCateDao.updateRootStockCate(rootStockCate);
 	}
+	
 }

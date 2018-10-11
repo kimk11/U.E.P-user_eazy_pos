@@ -8,7 +8,7 @@
 <!-- 아이디 : 메소드명, 파라미터 타입 : 사용되는 DTO--> 
 <!-- #{} 인스턴스 변수명 -->
 	<select id="selectRootStockCateList" parameterType="java.util.HashMap" resultType="com.cafe.charhanjan.dto.RootStockCate">
-		select root_stock_cate_code as rootStockCateCode,root_stock_cate_name as rootStockCateName from root_stock_cate
+		select root_stock_cate_code as rootStockCateCode,root_stock_cate_name as rootStockCateName from root_stock_cate order by cast(substring(rootStockCateCode, 9)as int) asc
 	</select>
 	
 	<update id="updateRootStockCate" parameterType="com.cafe.charhanjan.dto.RootStockCate">
@@ -24,6 +24,10 @@
 	<insert id="insertRootStockCate" parameterType="com.cafe.charhanjan.dto.RootStockCate">
 		INSERT INTO root_stock_cate (root_stock_cate_code, root_stock_cate_name)
 		VALUES (#{rootStockCateCode}
-		, #{rootStockCateName}
+		, #{rootStockCateName})
 	</insert>
+	
+	<select id="selectLastRootStockCateCode" resultType="String">
+		select CONCAT('rootcate', max(SUBSTRing(root_stock_cate_code, 9)+1)) as rootStockCateCode from root_stock_cate
+	</select>
 </mapper>	

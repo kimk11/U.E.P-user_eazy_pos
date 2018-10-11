@@ -35,4 +35,8 @@ public class RootStockCateDao {
     public int deleteRootStockCate(String rootStockCateCode) {
     	return sqlSessionTemplate.delete(NAMESPEACE+"deleteRootStockCate", rootStockCateCode);
     }
+    
+    public String selectLastRootStockCateCode() {
+    	return sqlSessionTemplate.selectOne(NAMESPEACE+"selectLastRootStockCateCode");
+    }
 }

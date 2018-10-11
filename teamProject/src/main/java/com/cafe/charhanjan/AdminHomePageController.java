@@ -6,9 +6,11 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cafe.charhanjan.dto.RootMenu;
 import com.cafe.charhanjan.dto.RootStockCate;
@@ -60,6 +62,8 @@ public class AdminHomePageController {
 	public String rootStockDetail() {
 		return "homePage/admin/stock/root_stock_detail";			// 본사 관리자 재고상세 화면
 	}
+
+// ------------------------------------------------------------본사 재고카테고리 ---------------------------------------------------------------------
 	
 	@RequestMapping(value= "/homePage/admin/stock/rootStockCateList", method=RequestMethod.GET)
 	public String rootStockCateList(Model model, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage, @RequestParam(value="pagePerRow", required=false, defaultValue="5") int pagePerRow) {
@@ -68,21 +72,43 @@ public class AdminHomePageController {
 		model.addAttribute("lastPage", map.get("lastPage"));
 		model.addAttribute("rootStockCateCount", map.get("rootStockCateCount"));
 		model.addAttribute("list", map.get("list"));
-		return "homePage/admin/stock/root_stock_cate_list";			// 본사 관리자 재고카테고리 리스트
+		return "homePage/admin/stock/root_stock_cate_list";					// 본사 관리자 재고카테고리 리스트
 	}
 	
+	@RequestMapping(value= "/homePage/admin/stock/getRootStockCateList", method=RequestMethod.GET)
+	public @ResponseBody List<RootStockCate> getRootStockCateList(Model model, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage, @RequestParam(value="pagePerRow", required=false, defaultValue="5") int pagePerRow) {
+		HashMap<String,Object> map = rootStockCateService.getRootStockCateList(currentPage, pagePerRow);
+		List<RootStockCate> list = (List<RootStockCate>) map.get("list");
+		return list;					// 본사 관리자 재고카테고리 리스트
+	}
+	
+/*	@RequestMapping(value= "/homePage/admin/stock/rootStockCateInsertAction", method=RequestMethod.POST)
+	public String rootStockCateInsertAction(RootStockCate rootStockCate) {
+		System.out.println("InsertAction");
+		int addResult = rootStockCateService.addRootStockCate(rootStockCate);
+		return "redirect:/homePage/admin/stock/rootStockCateList";			// 본사 관리자 재고카테고리 입력 요청
+	}*/
+	
 	@RequestMapping(value= "/homePage/admin/stock/rootStockCateInsertAction", method=RequestMethod.POST)
-	public String rootStockCateInsertAction() {
-		System.out.println("sss");
-		return "redirect:/homePage/admin/stock/rootStockCateList";			// 본사 관리자 재고입력 요청
+	public @ResponseBody int rootStockCateInsertAction(RootStockCate rootStockCate) {
+		System.out.println("InsertAction");
+		return rootStockCateService.addRootStockCate(rootStockCate);			// 본사 관리자 재고카테고리 입력 요청
 	}
 	
 	@RequestMapping(value= "/homePage/admin/stock/rootStockCateUpdateAction", method=RequestMethod.POST)
 	public String rootStockCateUpdateAction(RootStockCate rootStockCate) {
 		System.out.println("UpdateAction");
 		int modifyResult = rootStockCateService.modifyRootStockCate(rootStockCate);
-		return "redirect:/homePage/admin/stock/rootStockCateList";			// 본사 관리자 재고수정 요청
+		return "redirect:/homePage/admin/stock/rootStockCateList";			// 본사 관리자 재고카테고리 수정 요청
 	}
+	
+	@RequestMapping(value= "/homePage/admin/stock/rootStockCateDeleteAction", method=RequestMethod.GET)
+	public String rootStockCateDeleteAction(String rootStockCateCode) {
+		System.out.println("DeleteAction");
+		int removeResult = rootStockCateService.removeRootStockCate(rootStockCateCode);
+		return "redirect:/homePage/admin/stock/rootStockCateList";			// 본사 관리자 재고카테고리 삭제 요청
+	}
+// --------------------------------------------------------------------------------------------------------------------------------------------	
 	
 	@RequestMapping(value="/homePage/admin/menu/rootMenuInsert", method=RequestMethod.GET)
 	public String rootMenuInsert() {
