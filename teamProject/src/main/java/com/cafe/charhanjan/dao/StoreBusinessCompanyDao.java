@@ -28,8 +28,8 @@ public class StoreBusinessCompanyDao {
 	}
 	
 	// 거래처 삭제
-	public int deleteStoreBusinessCompany(StoreBusinessCompany storeBusinessCompany) {
-		return sqlSessionTemplate.delete(NAMESPACE+"deleteStoreBusinessCompany",storeBusinessCompany);
+	public int deleteStoreBusinessCompany(String storeBusinessCompanyCode) {
+		return sqlSessionTemplate.delete(NAMESPACE+"deleteStoreBusinessCompany",storeBusinessCompanyCode);
 	}
 	
 	// 거래처  조회
@@ -41,4 +41,10 @@ public class StoreBusinessCompanyDao {
 	public int getStoreBusinessCompanyCount() {
         return sqlSessionTemplate.selectOne(NAMESPACE+"getStoreBusinessCompanyCount");
     }
+	
+	// 거래처 코드 
+	public String getStoreBusinessCompanyCode() {
+		return sqlSessionTemplate.selectOne(NAMESPACE+"getStoreBusinessCompanyCode");
+	}
+	
 }

@@ -19,18 +19,20 @@ public class StoreBusinessCompanyService {
 	@Autowired
 	private StoreBusinessCompanyDao storeBusinessCompanyDao;
 	
-	
+// 	거래처 등록
 	public int addStoreBusinessCompany(StoreBusinessCompany storeBusinessCompany) {
+		storeBusinessCompany.setStoreBusinessCompanyCode(storeBusinessCompanyDao.getStoreBusinessCompanyCode());
 		return storeBusinessCompanyDao.insertStoreBusinessCompany(storeBusinessCompany);
 	}
 	
+// 	거래처 수정
 	public int modifyStoreBusinessCompany(StoreBusinessCompany storeBusinessCompany) {
 		return storeBusinessCompanyDao.updateStoreBusinessCompany(storeBusinessCompany);
 	}
 
-// 	
-	public int removeStoreBusinessCompany(StoreBusinessCompany storeBusinessCompany) {
-		return storeBusinessCompanyDao.deleteStoreBusinessCompany(storeBusinessCompany);
+// 	거래처 삭제
+	public int removeStoreBusinessCompany(String storeBusinessCompanyCode) {
+		return storeBusinessCompanyDao.deleteStoreBusinessCompany(storeBusinessCompanyCode);
 	}
 
 //	거래처 리스트
@@ -56,4 +58,6 @@ public class StoreBusinessCompanyService {
 	public int getStoreBusinessCompanyCount() {
 		return storeBusinessCompanyDao.getStoreBusinessCompanyCount();
 	}
+
+
 }

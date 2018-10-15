@@ -40,8 +40,8 @@
 					<td>${company.storeBusinessCompanyEmail}</td>
 					<td>${company.storeBusinessCompanyDate}</td>
 					<td>${company.storeBusinessCompanyTime}</td>
-					<td><a href="/charhanjan/pos/stock/updateStoreBusinessCompany">수정</a></td>
-					<td><a href="/charhanjan/pos/stock/deleteStoreBusinessCompany">삭제</a></td>
+					<td><a href="/charhanjan/pos/stock/modifyStoreBusinessCompany?storeBusinessCompanyCode=${company.storeBusinessCompanyCode}">수정</a></td>
+					<td><a href="/charhanjan/pos/stock/removeStoreBusinessCompanyAction?storeBusinessCompanyCode=${company.storeBusinessCompanyCode}">삭제</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

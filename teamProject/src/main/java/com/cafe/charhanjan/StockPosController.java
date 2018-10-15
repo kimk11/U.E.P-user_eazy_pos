@@ -47,24 +47,31 @@ public class StockPosController {
     	System.out.println("2. addStoreBusinessCompany 거래처 등록 액션 요청");
     	System.out.println(storeBusinessCompany);
         storeBusinessCompanyService.addStoreBusinessCompany(storeBusinessCompany);
-        return "redirect:/pos/stock/store_business_company_list";	// 거래처 등록 후 거래처리스트로 리다이렉트(재요청)
+        return "redirect:/pos/stock/storeBusinessCompanyList";	// 거래처 등록 후 거래처리스트로 리다이렉트(재요청)
     }
 	
-/*	// 거래서 수정 페이지 요청
-    @RequestMapping(value="/modifyStoreBusinessCompany", method = RequestMethod.GET)
-    public String boardModify(Model model, @RequestParam(value="storeBusinessCompanyCode", required=true) String storeBusinessCompanyCode, @RequestParam(value="storeCode") String storeCode){
-        StoreBusinessCompany storeBusinessCompany = storeBusinessCompanyService.modifyStoreBusinessCompany(storeBusinessCompany)
-        model.addAttribute("storeBusinessCompany", storeBusinessCompany);
-        return "pos/stock/store_business_company_update";
+	// 거래서 수정 페이지 요청
+    @RequestMapping(value="/pos/stock/modifyStoreBusinessCompany", method = RequestMethod.GET)
+	public String modifyStoreBusinessCompany() {
+		System.out.println("4. modifyStoreBusinessCompany 거래처 수정 페이지 요청");
+		return "pos/stock/store_business_company_update";
     }
-	 */
-	
 	// 거래처 수정(액션) 요청
-
+    @RequestMapping(value="/pos/stock/modifyStoreBusinessCompany", method = RequestMethod.GET)
+ 	public String modifyStoreBusinessCompany(@RequestParam(value="storeBusinessCompanyCode",required=true) String storeBusinessCompanyCode) {
+ 		System.out.println("5. modifyStoreBusinessCompany 거래처 수정(액션) 요청");
+ 		storeBusinessCompanyService.modifyStoreBusinessCompany(storeBusinessCompany);
+ 		return "redirect:/pos/stock/storeBusinessCompanyList";
+     }
 	
 	
 	// 거래처 삭제(액션) 요청
-	
-	
+	@RequestMapping(value="/pos/stock/removeStoreBusinessCompanyAction", method = RequestMethod.GET)
+	public String removeStoreBusinessCompany(@RequestParam(value="storeBusinessCompanyCode",required=true) String storeBusinessCompanyCode) {
+		System.out.println("3. removeStoreBusinessCompany 거래처 삭제 액션 요청");
+		System.out.println(storeBusinessCompanyCode + "<--storeBusinessCompanyCode");
+		storeBusinessCompanyService.removeStoreBusinessCompany(storeBusinessCompanyCode);
+		return "redirect:/pos/stock/storeBusinessCompanyList";
+	}
 
 }

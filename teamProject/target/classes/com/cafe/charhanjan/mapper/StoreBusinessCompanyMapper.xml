@@ -5,10 +5,12 @@
   
   <mapper namespace="com.cafe.charhanjan.mapper.StoreBusinessCompanyMapper">
 
+	<!-- storeCode 추가   -->
   	<insert id="insertStoreBusinessCompany" parameterType="com.cafe.charhanjan.dto.StoreBusinessCompany">
   		INSERT INTO store_business_company(
   		store_business_company_code
   		,store_code
+  		,store_business_company_name
   		,store_business_company_ceo
   		,store_business_company_phone
   		,store_business_company_licensee
@@ -19,16 +21,17 @@
   		,#{storeCode}
   		,#{storeBusinessCompanyName}
   		,#{storeBusinessCompanyCeo}
-  		,#{storeStockName}
-  		,#{storeStockCount}
-  		,#{storeStockPrice}
+  		,#{storeBusinessCompanyPhone}
+  		,#{storeBusinessCompanyLicensee}
+  		,#{storeBusinessCompanyEmail}
   		,CURDATE()
   		,CURTIME())
   	</insert>
   	
+  	<!--  WHERE절에서 체인점 코드 추가하기 : AND store_code=#{storeCode} -->
   	<update id="updateStoreBusinessCompany" parameterType="com.cafe.charhanjan.dto.StoreBusinessCompany">
   		UPDATE store_business_company
-		SET
+		SET	
 		store_business_company_name=#{storeBusinessCompanyName}
 		,store_business_company_ceo=#{storeBusinessCompanyCeo}
 		,store_business_company_phone=#{storeBusinessCompanyPhone}
@@ -36,25 +39,15 @@
 		,store_business_company_email=#{storeBusinessCompanyEmail}
 		,store_business_company_date=CURDATE()
 		,store_business_company_time=CURTIME()
-		WHERE store_business_company_code=#{storeBusinessCompanyCode} AND store_code=#{storeCode}
+		WHERE store_business_company_code=#{storeBusinessCompanyCode}
   	</update>
   
+  <!-- WHERE절에서 체인점 코드 추가하기 : AND store_code=#{storeCode} -->
   	<delete id="deleteStoreBusinessCompany" parameterType="com.cafe.charhanjan.dto.StoreBusinessCompany">
   		DELETE FROM store_business_company 
-  		WHERE store_business_company_code=#{storeBusinessCompanyCode} AND store_code=#{storeCode}
+  		WHERE store_business_company_code=#{storeBusinessCompanyCode}
   	</delete>
   		
-<!--   	<select id="selectStoreBusinessCompany">
-  		SELECT store_business_company_code
-  		,store_business_company_name
-  		,store_business_company_ceo
-  		,store_business_company_phone
-  		,store_business_company_licensee
-  		,store_business_company_email
-  		,store_business_company_date
-  		,store_business_company_time 
-  		FROM store_business_company
-  	</select> -->
   	
   	<!-- 페이징을 위한 총 거래처 수 계산 쿼리  -->
   	<select id="getStoreBusinessCompanyCount" resultType="int">
@@ -72,6 +65,10 @@
        ,store_business_company_date AS storeBusinessCompanyDate
        ,store_business_company_time  AS storeBusinessCompanyTime
        FROM store_business_company
+    </select>
+    
+    <select id ="getStoreBusinessCompanyCode" resultType="String">
+ 	   select concat('company', max(substring(store_business_company_code, 8)+1)) from store_business_company
     </select>
   </mapper>
   
